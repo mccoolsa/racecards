@@ -6,6 +6,8 @@ from gspread_dataframe import set_with_dataframe
 from gspread_formatting import *
 from oauth2client.service_account import ServiceAccountCredentials
 
+#Test sheet
+
 #1. Load JSON file
 with open('C:/Users/conor/rpscrape/racecards/2025-04-20.json', 'r') as f: #set this to your path of ./rpscrape today (todays card)
     data = json.load(f)
