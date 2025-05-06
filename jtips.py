@@ -57,3 +57,5 @@ while True:
         print(f"❌ Error: {e}")
 
     time.sleep(POLL_INTERVAL)
+# _________
+# upload script to VM to keep script consistently running - google cloud etc..
