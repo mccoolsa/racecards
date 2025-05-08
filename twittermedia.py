@@ -1,12 +1,14 @@
+#posts only media instances of user posts to a discord channel 
+#no need for json authentication file like in previous
 from playwright.sync_api import sync_playwright
 from datetime import datetime
 import requests
 import time
 
-# === CONFIGURATION ===
-USERNAME = "mooshtipsbeware"  # Public Twitter handle
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1369830226221076631/Tn52UquCGT7d3TDmjlIwDYnMJLkW2jGBBnU3iH8EK2E8Bo3ruay4bPzRNQUIu7J944XQ"
-POLL_INTERVAL = 15  # seconds
+# config
+USERNAME = "12345"  #public Twitter handle @
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/123456"
+POLL_INTERVAL = 15  #in seconds
 # ======================
 
 last_seen_id = None
@@ -21,16 +23,16 @@ def get_latest_media_tweet(page):
         permalink = link_element.get_attribute("href") if link_element else ""
         tweet_id = permalink.split("/")[-1] if permalink else None
 
-        # Check for media (image or video)
+        #check for media (image or video)
         media_element = tweet.query_selector("img[src*='twimg.com/media'], video")
         if not media_element:
             return None, None, None, None  # No media in this tweet
 
-        # Tweet text
+        #tweet text
         content_element = tweet.query_selector("div[lang]")
         tweet_text = content_element.inner_text().strip() if content_element else "[No text]"
 
-        # Timestamp
+        #timestamp
         time_element = tweet.query_selector("time")
         if time_element:
             iso_timestamp = time_element.get_attribute("datetime")
@@ -85,7 +87,7 @@ def main():
             except Exception as e:
                 print(f"❌ Error: {e}")
 
-            time.sleep(POLL_INTERVAL)
+            time.sleep(POLL_INTERVAL) #note this does not post anything when running - use tail -f /var/log/yourbotname.log in SSH to check output, "~" will sequentially be posting, as no output, however will ensure the bot is running.
 
         browser.close()
 
