@@ -6,7 +6,7 @@ import time
 REDDIT_CLIENT_ID = '12345' #under personal use script on reddit api
 REDDIT_CLIENT_SECRET = '3456' #secret encrypted key on reddit api
 REDDIT_USER_AGENT = 'script:reddit.discord.bot:v1.0' #bot client
-TARGET_USERNAME = 'J_HorseRacing' #target username J_horseracing - goat!
+TARGET_USERNAME = 'goat' #target reddit username - goat!
 
 DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/12345' #take from webhook integration - copy url here
 POLL_INTERVAL = 60  #ping in seconds
