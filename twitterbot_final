@@ -7,11 +7,11 @@ import requests
 import sys
 import platform
 
-# === CONFIGURATION ===
-USERNAME = "willhewitt1010"  # Twitter handle (without the @)
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1369755732458602696/XAD-nWIHgo2Pu_riVnv0aJM_BH8RrClyfO-Iv2PkJRo57SeCGoA19DksmDTv_Sf-RcqY"  # Discord webhook URL for notifications
+# config
+USERNAME = "user"  # Twitter handle (without the @)
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/................"  # Discord webhook URL for notifications
 POLL_INTERVAL = 30  # Interval (in seconds) between checks for new tweets
-SESSION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "twitter_session.json")
+SESSION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "twitter_session.json") #run tsession file to conjure a twitter_session.json file (requires login)
 # ---------------------
 
 last_seen_id = None  # Tracks the most recent tweet to avoid duplicates
