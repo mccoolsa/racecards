@@ -8,8 +8,8 @@ import sys
 import platform
 
 # === CONFIGURATION ===
-USERNAME = "willhewitt1010"  # Twitter handle (without the @)
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1369755732458602696/XAD-nWIHgo2Pu_riVnv0aJM_BH8RrClyfO-Iv2PkJRo57SeCGoA19DksmDTv_Sf-RcqY"  # Discord webhook URL for notifications
+USERNAME = "user"  # Twitter handle (without the @)
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/.............."  # Discord webhook URL for notifications
 POLL_INTERVAL = 30  # Interval (in seconds) between checks for new tweets
 SESSION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "twitter_session.json")
 # ---------------------
