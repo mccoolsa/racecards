@@ -8,8 +8,8 @@ import sys
 import platform
 
 # === CONFIGURATION ===
-USERNAME = "user"  # Twitter handle (without the @)
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/.............."  # Discord webhook URL for notifications
+USERNAME = "willhewitt1010"  # Twitter handle (without the @)
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1369755732458602696/XAD-nWIHgo2Pu_riVnv0aJM_BH8RrClyfO-Iv2PkJRo57SeCGoA19DksmDTv_Sf-RcqY"  # Discord webhook URL for notifications
 POLL_INTERVAL = 30  # Interval (in seconds) between checks for new tweets
 SESSION_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "twitter_session.json")
 # ---------------------
@@ -47,7 +47,7 @@ def alert_discord_session_expired():
                 "content": (
                     "⚠️ **Twitter session expired or invalid.**\n"
                     "Please run `save_twitter_session.py` **from inside the VM**, then restart the bot."
-                )
+                ) #posts into discord
             })
             print("📣 Sent session expired alert to Discord.")
         except Exception as e:
@@ -62,6 +62,10 @@ def get_latest_tweet(page):
     try:
         print(f"🔗 Loading: https://twitter.com/{USERNAME}")
         page.goto(f"https://twitter.com/{USERNAME}", wait_until="domcontentloaded", timeout=60000)
+        #replace above line with the following to include all tweets (replies, etc).
+        #print(f"🔗 Loading: https://twitter.com/search?q=from%3A{USERNAME}&f=live")
+        #page.goto(f"https://twitter.com/search?q=from%3A{USERNAME}&f=live", wait_until="domcontentloaded", timeout=60000)
+
         time.sleep(5)  # Allow full rendering of dynamic content
         page.wait_for_selector("article", timeout=15000)
 
@@ -122,7 +126,7 @@ def main():
         return
 
     with sync_playwright() as p:
-        # Browser launch configuration
+        #browser launch configuration
         launch_args = {
             "headless": True,
             "args": [
@@ -133,7 +137,7 @@ def main():
             ]
         }
 
-        # Use system Chrome if on Linux
+        #use system Chrome if on Linux
         if platform.system() == "Linux":
             launch_args["executable_path"] = "/usr/bin/google-chrome-stable"
 
@@ -183,10 +187,11 @@ def main():
 
         browser.close()
 
-
 if __name__ == "__main__":
     try:
-        sys.stdout.reconfigure(encoding='utf-8')  # Ensure proper UTF-8 output for emojis/logs
+        sys.stdout.reconfigure(encoding='utf-8')  #ensure proper UTF-8 output for emojis/logs
         main()
     except KeyboardInterrupt:
         print("🛑 Bot stopped by user.")
+
+#upload to VM 
